@@ -1,0 +1,1 @@
+-[Flutter and Firebase - Setup and Authentication](https://www.youtube.com/watch?v=9V0usupGyEc&t=464s)
