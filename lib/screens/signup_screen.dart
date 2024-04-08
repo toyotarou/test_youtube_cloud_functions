@@ -90,12 +90,15 @@ class _SignupScreenState extends State<SignupScreen> {
                             return;
                           }
 
-                          final isSaved = await FirebaseHelper.saveUser(
-                            context: context,
-                            email: emailEditingController.text,
-                            password: passwordEditingController.text,
-                            name: nameEditingController.text,
-                          );
+                          try {
+                            final isSaved = await FirebaseHelper.saveUser(
+                              email: emailEditingController.text,
+                              password: passwordEditingController.text,
+                              name: nameEditingController.text,
+                            );
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+                          }
 
                           setState(() {
                             isLoading = false;
