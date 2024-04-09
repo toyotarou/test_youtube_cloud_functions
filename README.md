@@ -3,3 +3,5 @@
 -[Flutter and Firebase - Cloud Firestore](https://www.youtube.com/watch?v=VNVeR8WB6q0&list=PLj919aSiofd1zcyCtAm7o6YAZ9RfXxCOg&index=2)
 ---
 - [Flutter and Firebase - Cloud Functions](https://www.youtube.com/watch?v=bzRp2sJ7kZc&list=PLj919aSiofd1zcyCtAm7o6YAZ9RfXxCOg&index=3)
+---
+- [Flutter and Firebase - Send & Receive Notification](https://www.youtube.com/watch?v=J7vQqohHxag&list=PLj919aSiofd1zcyCtAm7o6YAZ9RfXxCOg&index=4)

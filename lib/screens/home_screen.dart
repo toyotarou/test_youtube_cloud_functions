@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
 import '../models/user.dart';
 import '../services/firebase_helper.dart';
+import 'send_notification_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -43,8 +45,10 @@ class HomeScreen extends StatelessWidget {
                         Text(e.name),
                         Text(e.token),
                         ElevatedButton(
-                          onPressed: FirebaseHelper.testHealth,
-                          child: Text('button'),
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => SendNotificationScreen(token: e.token)));
+                          },
+                          child: const Text('button'),
                         ),
                       ],
                     );
