@@ -13,32 +13,39 @@ class HomeScreen extends StatelessWidget {
         title: const Text('Home Screen'),
         centerTitle: true,
       ),
-      body: Center(
-        child: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseHelper.buildViews,
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return const CircularProgressIndicator();
-            }
-
-            final users = <UserModel>[];
-            final docs = snapshot.data?.docs;
-            if (docs == null || docs.isEmpty) {
-              return const Text('No Data');
-            }
-
-            for (final doc in docs) {
-              if (doc.data() != null) {
-                users.add(UserModel.fromJson(doc.data()! as Map<String, dynamic>));
+      body: Column(
+        children: [
+          StreamBuilder<QuerySnapshot>(
+            stream: FirebaseHelper.buildViews,
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return const CircularProgressIndicator();
               }
-            }
 
-            return Column(
-                children: users.map((e) {
-              return Text(e.name);
-            }).toList());
-          },
-        ),
+              final users = <UserModel>[];
+              final docs = snapshot.data?.docs;
+              if (docs == null || docs.isEmpty) {
+                return const Text('No Data');
+              }
+
+              for (final doc in docs) {
+                if (doc.data() != null) {
+                  users.add(UserModel.fromJson(doc.data()! as Map<String, dynamic>));
+                }
+              }
+
+              return Column(
+                  children: users.map((e) {
+//                return Text(e.name);
+
+                return ElevatedButton(
+                  onPressed: FirebaseHelper.testHealth,
+                  child: Text(e.name),
+                );
+              }).toList());
+            },
+          ),
+        ],
       ),
     );
   }

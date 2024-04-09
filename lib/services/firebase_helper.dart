@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:test_youtube_cloud_functions/screens/home_screen.dart';
-import 'package:test_youtube_cloud_functions/screens/signup_screen.dart';
+
 import '../extensions/extensions.dart';
 import '../models/user.dart';
+import '../screens/home_screen.dart';
+import '../screens/signup_screen.dart';
 
 class FirebaseHelper {
   const FirebaseHelper._();
@@ -48,5 +50,16 @@ class FirebaseHelper {
     }
 
     return const SignupScreen();
+  }
+
+  ///
+  static Future<void> testHealth() async {
+    final callable = FirebaseFunctions.instance.httpsCallable('checkHealth');
+
+    final response = await callable.call();
+
+    if (response.data != null) {
+      print(response.data);
+    }
   }
 }
