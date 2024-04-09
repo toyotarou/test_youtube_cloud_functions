@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:test_youtube_cloud_functions/screens/home_screen.dart';
+import 'package:test_youtube_cloud_functions/screens/signup_screen.dart';
 import '../extensions/extensions.dart';
 import '../models/user.dart';
 
@@ -37,4 +40,13 @@ class FirebaseHelper {
 
   ///
   static Stream<QuerySnapshot<Map<String, dynamic>>> get buildViews => _db.collection('users').snapshots();
+
+  ///
+  static Widget get homeScreen {
+    if (_auth.currentUser != null) {
+      return const HomeScreen();
+    }
+
+    return const SignupScreen();
+  }
 }
