@@ -1,3 +1,5 @@
 -[Flutter and Firebase - Setup and Authentication](https://www.youtube.com/watch?v=9V0usupGyEc&t=464s)
 ---
 -[Flutter and Firebase - Cloud Firestore](https://www.youtube.com/watch?v=VNVeR8WB6q0&list=PLj919aSiofd1zcyCtAm7o6YAZ9RfXxCOg&index=2)
+---
+- [Flutter and Firebase - Cloud Functions](https://www.youtube.com/watch?v=bzRp2sJ7kZc&list=PLj919aSiofd1zcyCtAm7o6YAZ9RfXxCOg&index=3)

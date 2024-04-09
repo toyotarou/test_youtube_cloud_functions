@@ -33,7 +33,10 @@ class HomeScreen extends StatelessWidget {
               }
             }
 
-            return Text(users.first.name);
+            return Column(
+                children: users.map((e) {
+              return Text(e.name);
+            }).toList());
           },
         ),
       ),
