@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../services/firebase_helper.dart';
+import 'home_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -96,6 +97,10 @@ class _SignupScreenState extends State<SignupScreen> {
                               password: passwordEditingController.text,
                               name: nameEditingController.text,
                             );
+
+                            if (isSaved && mounted) {
+                              await Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+                            }
                           } catch (e) {
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
                           }

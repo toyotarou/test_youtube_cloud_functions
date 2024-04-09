@@ -34,4 +34,7 @@ class FirebaseHelper {
 
     return true;
   }
+
+  ///
+  static Stream<QuerySnapshot<Map<String, dynamic>>> get buildViews => _db.collection('users').snapshots();
 }
