@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import '../extensions/extensions.dart';
@@ -27,11 +28,15 @@ class FirebaseHelper {
     final userRef = _db.collection('users').doc(credential.user!.uid);
     final createdAt = DateTime.now().yyyymmdd;
 
+    final String? token = await FirebaseMessaging.instance.getToken();
+
+    if (token == null) return false;
+
     final userModel = UserModel(
       uid: credential.user!.uid,
       name: name,
       platform: Platform.operatingSystem,
-      token: '',
+      token: token,
       createdAt: createdAt,
     );
 

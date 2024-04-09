@@ -35,14 +35,20 @@ class HomeScreen extends StatelessWidget {
               }
 
               return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: users.map((e) {
-//                return Text(e.name);
-
-                return ElevatedButton(
-                  onPressed: FirebaseHelper.testHealth,
-                  child: Text(e.name),
-                );
-              }).toList());
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(e.name),
+                        Text(e.token),
+                        ElevatedButton(
+                          onPressed: FirebaseHelper.testHealth,
+                          child: Text('button'),
+                        ),
+                      ],
+                    );
+                  }).toList());
             },
           ),
         ],
